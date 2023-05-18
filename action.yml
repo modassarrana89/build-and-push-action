@@ -99,7 +99,7 @@ runs:
         image: ${{ inputs.image_name}}
         archs: ${{ inputs.archs }}
         context: ${{ inputs.docker_context }}
-        tags: latest ${{ inputs.tag }} ${{ steps.vars.outputs.cur_date }} ${{ github.sha }}
+        tags: ${{ inputs.tag }}
 
     - name: Push image to Quay.io/${{ inputs.registry_namespace }} namespace
       if: steps.check_exclude_file.outputs.files_exists == 'false'
