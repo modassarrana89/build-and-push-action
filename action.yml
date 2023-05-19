@@ -25,10 +25,14 @@ inputs:
     description: 'Tag of the built image'
     required: false
     default: ''
-  archs:
-    description: 'Label the image with this architecture. For multiple architectures, seperate them by a comma'
+  #archs:
+  #  description: 'Label the image with this architecture. For multiple architectures, seperate them by a comma'
+  #  required: false
+  #  default: "amd64"
+  platforms:
+    description: "to built Image on "
     required: false
-    default: "amd64"
+    default: 'linux/amd64'
   dockerfile:
     description: 'Dockerfile to build the image with a relative path'
     required: false
@@ -86,7 +90,7 @@ runs:
         
 
     - name: Set up QEMU
-      if: inputs.archs != 'amd64'
+      if: inputs.platforms != 'amd64'
       uses: docker/setup-qemu-action@v2
 
     - name: Build image
@@ -97,7 +101,7 @@ runs:
       with:
         dockerfiles: ${{ inputs.dockerfile }}
         image: ${{ inputs.image_name}}
-        archs: ${{ inputs.archs }}
+        archs: ${{ inputs.platforms }}
         context: ${{ inputs.docker_context }}
         tags: ${{ inputs.tag }}
 
