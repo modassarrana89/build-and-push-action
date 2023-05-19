@@ -101,7 +101,7 @@ runs:
       with:
         dockerfiles: ${{ inputs.dockerfile }}
         image: ${{ inputs.image_name}}
-        archs: ${{ inputs.platforms }}
+        platforms: ${{ inputs.platforms }}
         context: ${{ inputs.docker_context }}
         tags: ${{ inputs.tag }}
 
