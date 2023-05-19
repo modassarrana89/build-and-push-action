@@ -89,7 +89,7 @@ runs:
       uses: docker/setup-qemu-action@v1
 
     - name: Build image
-      if: steps.check_exclude_file.outputs.files_exists == 'false' and inputs.platform == ''
+      if: steps.check_exclude_file.outputs.files_exists == 'false'
       id: build-image
       # https://github.com/marketplace/actions/buildah-build
       uses: redhat-actions/buildah-build@v2
