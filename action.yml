@@ -110,13 +110,13 @@ runs:
         password: ${{ inputs.registry_token  }}
 
     - name: Build and push
-      id: docker_build
+      id: push-to-registry
       uses: docker/build-push-action@v2
       with:
         platforms: ${{ inputs.platforms }}
         file: ${{ inputs.dockerfile }}
         push: true
-        tags: ${{ inputs.registry }}/${{ inputs.registry_namespace }}/${{ inputs.image_name}}:{{ inputs.tag }}
+        tags: ${{ inputs.registry }}/${{ inputs.registry_namespace }}/${{ inputs.image_name}}:${{ inputs.tag }}
 
 
     #- name: Push image to Quay.io/${{ inputs.registry_namespace }} namespace
