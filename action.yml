@@ -27,7 +27,7 @@ inputs:
     default: ''
   archs:
     required: false
-    default: ''
+    default: 'amd64'
   dockerfile:
     description: 'Dockerfile to build the image with a relative path'
     required: false
@@ -85,7 +85,7 @@ runs:
         
 
     - name: Set up QEMU
-      if: inputs.archs != ''
+      if: inputs.archs != 'amd64'
       uses: docker/setup-qemu-action@v1
 
     - name: Build image
